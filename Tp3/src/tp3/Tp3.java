@@ -4,6 +4,7 @@ import estudiantes.Estudiante;
 import mascotas.Mascota;
 import libros.Libro;
 import gallinas.Gallinas;
+import naves_espaciales.NaveEspacial;
 
 /**
  *
@@ -11,10 +12,11 @@ import gallinas.Gallinas;
  */
 public class Tp3 {
     public static void main(String[] args) {
-//        ejEstudiantes();
-//        ejMascotas();
-//        ejLibros();
+        ejEstudiantes();
+        ejMascotas();
+        ejLibros();
         ejGallinas();
+        ejNaveEspacial();
     }
     
     public static void ejEstudiantes() {
@@ -63,5 +65,19 @@ public class Tp3 {
         
         System.out.println("Gallina 1: " + gallina1.mostrarEstado());
         System.out.println("Gallina 2: " + gallina2.mostrarEstado());
+    }
+    
+    public static void ejNaveEspacial() {
+        NaveEspacial nave1 = new NaveEspacial("XMN3", 50);
+        
+        System.out.println(nave1.mostrarEstado());
+        nave1.despegar();
+        
+        System.out.println(nave1.avanzar(70));
+        System.out.println(nave1.avanzar(1));
+        System.out.println(nave1.recargarCombustible(21));
+        System.out.println(nave1.avanzar(70));
+        
+        System.out.println(nave1.mostrarEstado());
     }
 }

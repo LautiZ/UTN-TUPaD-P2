@@ -5,9 +5,9 @@ package gallinas;
  * @author zullo
  */
 public class Gallinas {
-    int _idGallina;
-    int _edad;
-    int _huevosPuestos;
+    private int _idGallina;
+    private int _edad;
+    private int _huevosPuestos;
 
     public Gallinas(int idGallina, int edad, int huevosPuestos) {
         this._idGallina = idGallina;
@@ -26,6 +26,6 @@ public class Gallinas {
     }
     
     public String mostrarEstado() {
-         return this._idGallina + " " + this._edad + " " + this._huevosPuestos;
+        return this._idGallina + " " + this._edad + " " + this._huevosPuestos;
     }
 }
