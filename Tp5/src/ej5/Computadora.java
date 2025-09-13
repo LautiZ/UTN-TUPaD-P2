@@ -56,7 +56,7 @@ public class Computadora {
         this.propietario = propietario;
         
         if (propietario != null) {
-            propietario.setComputadora(this); // Llama a setCoche en Matricula
+            propietario.setComputadora(this);
         }
     }
     

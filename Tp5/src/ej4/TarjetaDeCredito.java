@@ -48,7 +48,7 @@ public class TarjetaDeCredito {
         this.cliente = cliente;
         
         if (cliente != null) {
-            cliente.setTarjeta(this); // Llama a setCoche en Matricula
+            cliente.setTarjeta(this);
         }
     }
 
