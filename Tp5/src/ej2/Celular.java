@@ -15,12 +15,11 @@ public class Celular {
     private Bateria bateria;
     private Usuario usuario;
 
-    public Celular(String imei, String marca, String modelo, Usuario usuario, String modeloBateria, double capacidad) {
+    public Celular(String imei, String marca, String modelo, String modeloBateria, double capacidad) {
         this.imei = imei;
         this.marca = marca;
         this.modelo = modelo;
         this.bateria = new Bateria(modeloBateria, capacidad);
-        this.usuario = usuario;
     }
 
     public String getImei() {
@@ -55,8 +54,12 @@ public class Celular {
         this.bateria = bateria;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public void getUsuario() {
+        if (usuario != null) {
+            System.out.println("Usuario: " + usuario.getNombre());
+        } else {
+            System.out.println("No tiene usuario");
+        }
     }
 
     public void setUsuario(Usuario usuario) {

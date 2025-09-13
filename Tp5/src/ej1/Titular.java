@@ -28,8 +28,12 @@ public class Titular {
         this.dni = dni;
     }
 
-    public Pasaporte getPasaporte() {
-        return pasaporte;
+    public void getPasaporte() {
+        if (pasaporte != null) {
+            System.out.println("Pasaporte: " + pasaporte.getNumero());
+        } else {
+            System.out.println("No tiene pasaporte");
+        }
     }
 
     public void setPasaporte(Pasaporte pasaporte) {

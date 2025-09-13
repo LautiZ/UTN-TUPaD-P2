@@ -11,10 +11,9 @@ public class Pasaporte {
         this.fotoPasaporte = new Foto(linkImagen, "4:3");
     }
 
-    public Pasaporte(String numero, String fechaEmision, Foto fotoPasaporte, Titular titular, String linkImagen) {
+    public Pasaporte(String numero, String fechaEmision, Foto fotoPasaporte, String linkImagen) {
         this.numero = numero;
         this.fechaEmision = fechaEmision;
-        this.titular = titular;
         this.fotoPasaporte = new Foto(linkImagen, "4:3");
     }
 
@@ -42,8 +41,12 @@ public class Pasaporte {
         this.fotoPasaporte = fotoPasaporte;
     }
 
-    public Titular getTitular() {
-        return titular;
+    public void getTitular() {
+        if (titular != null) {
+            System.out.println("Titular: " + titular.getDni());
+        } else {
+            System.out.println("No tiene titular");
+        }
     }
 
     public void setTitular(Titular titular) {
