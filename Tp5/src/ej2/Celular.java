@@ -15,11 +15,11 @@ public class Celular {
     private Bateria bateria;
     private Usuario usuario;
 
-    public Celular(String imei, String marca, String modelo, String modeloBateria, double capacidad) {
+    public Celular(String imei, String marca, String modelo, Bateria bateria) {
         this.imei = imei;
         this.marca = marca;
         this.modelo = modelo;
-        this.bateria = new Bateria(modeloBateria, capacidad);
+        this.bateria = bateria;
     }
 
     public String getImei() {

@@ -14,10 +14,10 @@ public class Computadora {
     private PlacaMadre placaMadre;
     private Propietario propietario;
 
-    public Computadora(String marca, String nroSerie, PlacaMadre placaMadre) {
+    public Computadora(String marca, String nroSerie, String modelo, String chipset) {
         this.marca = marca;
         this.nroSerie = nroSerie;
-        this.placaMadre = placaMadre;
+        this.placaMadre = new PlacaMadre(modelo, chipset);
     }
 
     public String getMarca() {
