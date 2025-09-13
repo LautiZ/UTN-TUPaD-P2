@@ -11,6 +11,7 @@ package ej2;
 public class Usuario {
     private String nombre;
     private String dni;
+    private Celular celular;
 
     public Usuario(String nombre, String dni) {
         this.nombre = nombre;
@@ -31,6 +32,22 @@ public class Usuario {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public void getCelular() {
+        if (celular != null) {
+            System.out.println("Titular: " + celular.getImei());
+        } else {
+            System.out.println("No tiene titular");
+        }
+    }
+
+    public void setCelular(Celular celular) {
+        this.celular = celular;
+        
+        if (celular != null) {
+            celular.setUsuario(this); // Llama a setCoche en Matricula
+        }
     }
     
     

@@ -51,6 +51,10 @@ public class Pasaporte {
 
     public void setTitular(Titular titular) {
         this.titular = titular;
+        
+        if (titular != null) {
+            titular.setPasaporte(this); // Llama a setCoche en Matricula
+        }
     }
     
     

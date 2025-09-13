@@ -64,6 +64,10 @@ public class Celular {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        
+        if (usuario != null) {
+            usuario.setCelular(this); // Llama a setCoche en Matricula
+        }
     }
     
     
