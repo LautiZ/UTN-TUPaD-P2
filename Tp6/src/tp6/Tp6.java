@@ -5,6 +5,9 @@ import ej1.Producto;
 import ej2.Autor;
 import ej2.Biblioteca;
 import ej2.Libro;
+import ej3.Curso;
+import ej3.Profesor;
+import ej3.Universidad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,8 @@ import java.util.List;
 public class Tp6 {
     public static void main(String[] args) {
         // ejercicio1();
-        ejercicio2();
+        // ejercicio2();
+        ejercicio3();
     }
     
     public static void ejercicio1() {
@@ -176,5 +180,148 @@ public class Tp6 {
         // 9. Listar todos los autores de los libros disponibles en la biblioteca
         System.out.println("=== 9. LISTANDO AUTORES DISPONIBLES ===");
         biblioteca.mostrarAutoresDisponibles();
+    }
+    
+    public static void ejercicio3() {
+         System.out.println("===== SISTEMA DE GESTIÓN UNIVERSITARIA =====\n");
+        
+        // PASO 1: Crear la universidad
+        Universidad universidad = new Universidad("Universidad Nacional");
+        
+        // PASO 1: Crear al menos 3 profesores
+        System.out.println("1. CREANDO PROFESORES:");
+        Profesor prof1 = new Profesor("P001", "Dr. Juan García", "Matemáticas");
+        Profesor prof2 = new Profesor("P002", "Dra. María López", "Programación");
+        Profesor prof3 = new Profesor("P003", "Ing. Carlos Rodríguez", "Bases de Datos");
+        Profesor prof4 = new Profesor("P004", "Lic. Ana Martínez", "Sistemas Operativos");
+        System.out.println("✓ Creados 4 profesores\n");
+        
+        // PASO 1: Crear 5 cursos
+        System.out.println("2. CREANDO CURSOS:");
+        Curso curso1 = new Curso("MAT101", "Cálculo I");
+        Curso curso2 = new Curso("PROG101", "Programación Básica");
+        Curso curso3 = new Curso("BD101", "Bases de Datos I");
+        Curso curso4 = new Curso("SO101", "Sistemas Operativos");
+        Curso curso5 = new Curso("MAT102", "Cálculo II");
+        System.out.println("✓ Creados 5 cursos\n");
+        
+        // PASO 2: Agregar profesores y cursos a la universidad
+        System.out.println("3. AGREGANDO A LA UNIVERSIDAD:");
+        universidad.agregarProfesor(prof1);
+        universidad.agregarProfesor(prof2);
+        universidad.agregarProfesor(prof3);
+        universidad.agregarProfesor(prof4);
+        
+        universidad.agregarCurso(curso1);
+        universidad.agregarCurso(curso2);
+        universidad.agregarCurso(curso3);
+        universidad.agregarCurso(curso4);
+        universidad.agregarCurso(curso5);
+        System.out.println("✓ Agregados profesores y cursos\n");
+        
+        // PASO 3: Asignar profesores a cursos
+        System.out.println("4. ASIGNANDO PROFESORES A CURSOS:");
+        universidad.asignarProfesorACurso("MAT101", "P001");
+        universidad.asignarProfesorACurso("PROG101", "P002");
+        universidad.asignarProfesorACurso("BD101", "P003");
+        universidad.asignarProfesorACurso("SO101", "P004");
+        universidad.asignarProfesorACurso("MAT102", "P001");
+        System.out.println("✓ Asignaciones realizadas\n");
+        
+        // PASO 4: Listar cursos con su profesor y profesores con sus cursos
+        System.out.println("5. LISTADOS INICIALES:");
+        System.out.println("─────────────────────────");
+        universidad.listarProfesores();
+        System.out.println();
+        
+        System.out.println("Cursos con sus profesores:");
+        for (Curso curso : universidad.getCursos()) {
+            curso.mostrarInfo();
+            curso.getProfesor();
+            System.out.println("─────────────────────────");
+        }
+        System.out.println();
+        
+        System.out.println("Profesores con sus cursos:");
+        for (Profesor profesor : universidad.getProfesores()) {
+            profesor.mostrarInfo();
+            profesor.listarCursos();
+            System.out.println("─────────────────────────");
+        }
+        System.out.println();
+        
+        // PASO 5: Cambiar profesor de un curso y verificar sincronización
+        System.out.println("─────────────────────────");
+        System.out.println("6. CAMBIAR PROFESOR DE UN CURSO:");
+        System.out.println("Antes del cambio:");
+        System.out.print("  PROG101 → ");
+        curso2.getProfesor();
+        
+        universidad.asignarProfesorACurso("PROG101", "P001");
+        
+        System.out.println("Después de cambiar a P001:");
+        System.out.print("  PROG101 → ");
+        curso2.getProfesor();
+        
+        System.out.println("\nVerificación de sincronización:");
+        System.out.println("  Cursos de Dr. Juan García:");
+        prof1.listarCursos();
+        System.out.println("  Cursos de Dra. María López:");
+        prof2.listarCursos();
+        System.out.println();
+        
+        // PASO 6: Remover un curso y confirmar que no aparece en la lista del profesor
+        System.out.println("─────────────────────────");
+        System.out.println("7. REMOVER UN CURSO:");
+        System.out.println("Antes de remover MAT102:");
+        System.out.println("  Cursos de Dr. Juan García:");
+        prof1.listarCursos();
+        
+        universidad.eliminarCurso("MAT102");
+        
+        System.out.println("Después de remover MAT102:");
+        System.out.println("  Cursos de Dr. Juan García:");
+        prof1.listarCursos();
+        System.out.println("  Cursos totales en universidad: " + universidad.getCursos().size());
+        System.out.println();
+        
+        // PASO 7: Remover un profesor y dejar profesor = null
+        System.out.println("─────────────────────────");
+        System.out.println("8. REMOVER UN PROFESOR:");
+        System.out.println("Antes de remover P004 (Ing. Carlos Rodríguez):");
+        System.out.println("  Cursos totales: " +  universidad.getCursos().size());
+        System.out.print("  SO101 → ");
+        curso4.getProfesor();
+        
+        universidad.eliminarProfesor("P004");
+        
+        System.out.println("Después de remover P004:");
+        System.out.println("  Profesores totales: " +  universidad.getProfesores().size());
+        System.out.print("  SO101 → ");
+        curso4.getProfesor();
+        System.out.println();
+        
+        // PASO 8: Reporte - cantidad de cursos por profesor
+        System.out.println("─────────────────────────");
+        System.out.println("9. REPORTE: CANTIDAD DE CURSOS POR PROFESOR:");
+        System.out.println();
+        generarReporte(universidad);
+    }
+    
+    private static void generarReporte(Universidad universidad) {
+        java.util.List<Profesor> profesores = universidad.getProfesores();
+        
+        int totalCursos = 0;
+        
+        for (Profesor profesor : profesores) {
+            int cantidadCursos = profesor.getCursos().size();
+            totalCursos += cantidadCursos;
+            System.out.println("  " + profesor.getNombre() + 
+                             " (" + profesor.getId() + "): " + 
+                             cantidadCursos + " curso(s)");
+        }
+        
+        System.out.println("\n  ─────────────────────");
+        System.out.println("  TOTAL: " + totalCursos + " cursos asignados");
     }
 }
