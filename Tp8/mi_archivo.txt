@@ -1,0 +1,3 @@
+Este es un archivo de texto de ejemplo.
+Contiene varias líneas de texto.
+Hola, Java!
